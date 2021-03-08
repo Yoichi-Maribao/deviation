@@ -9,7 +9,7 @@ def standardize(scr, pn) #scores, pesonNum
   #差を二乗した合計を人数で割ったものの平方根を求める
   standardDev = Math.sqrt(gaps.map { |x| x ** 2}.sum / pn) #標準偏差
   #偏差値=(得点-平均点)÷標準偏差×10+50
-  deviation = gaps.map { |x| (x / standardDev * 10) + 50}
+  deviation = gaps.map { |x| ((x / standardDev * 10) + 50).to_i}
   return deviation #偏差値
 end
 
