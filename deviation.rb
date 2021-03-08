@@ -1,39 +1,16 @@
 inputScores = [60, 90, 50, 40, 40, 100, 40, 60, 70, 50]
 personNum = inputScores.count
-#average
-def average(sc)
-  sum = 0
-  sc.each do |s|
-    sum += s
-  end
 
-  avrg = sum / sc.count
-  return avrg
+def standardize(scr, pn) #scores, pesonNum
+  avr = scr.sum / scr.count #平均値
+  #特典と平均値の差を算出
+  gaps = scr.map { |x| x - avr}
+
+  #差を二乗した合計を人数で割ったものの平方根を求める
+  standardDev = Math.sqrt(gaps.map { |x| x ** 2}.sum / pn) #標準偏差
+  #偏差値=(得点-平均点)÷標準偏差×10+50
+  deviation = gaps.map { |x| (x / standardDev * 10) + 50}
+  return deviation #偏差値
 end
 
-avr = average(inputScores)
-
-def standardize(sc, av, pn) #scores, average, pesonNum
-  gaps = []
-
-  sc.each do |score|
-    gaps << score.to_i - av.to_i
-  end
-
-  #gap を二乗
-  squared = []
-  gaps.each do |gap|
-    squared << gap ** 2
-  end
-  squared2 = squared.sum / pn
-  standardDev = Math.sqrt(squared2.to_i) #標準偏差
-
-  deviation = []
-  gaps.each do |gap|
-    tmp = gap / standardDev * 10
-    deviation << tmp.to_i + 50
-  end
-  return deviation
-end
-
-result = standardize(inputScores, avr, personNum) #偏差値を配列で格納
+p result = standardize(inputScores, personNum) #偏差値を配列で格納
