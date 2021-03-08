@@ -1,5 +1,5 @@
-input_scores = [60, 90, 50, 40, 40, 100, 40, 60, 70, 50]
-personNum = input_scores.count
+inputScores = [60, 90, 50, 40, 40, 100, 40, 60, 70, 50]
+personNum = inputScores.count
 #average
 def average(sc)
   sum = 0
@@ -11,7 +11,7 @@ def average(sc)
   return avrg
 end
 
-avr = average(input_scores)
+avr = average(inputScores)
 
 def standardize(sc, av, pn) #scores, average, pesonNum
   gaps = []
@@ -36,4 +36,4 @@ def standardize(sc, av, pn) #scores, average, pesonNum
   return deviation
 end
 
-result = standardize(input_scores, avr, personNum) #偏差値を配列で格納
+result = standardize(inputScores, avr, personNum) #偏差値を配列で格納
