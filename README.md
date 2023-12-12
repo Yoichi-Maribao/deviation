@@ -1,4 +1,4 @@
-#How to use
+# How to use
 
 input_scoresに配列で点数を入れていくだけ！
 
